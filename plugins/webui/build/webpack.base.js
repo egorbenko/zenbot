@@ -5,14 +5,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const postcss = [
   require('autoprefixer')({
-    browsers: ['last 2 versions', 'ie > 8']
-  }),
-  require('precss')
+    browsers: ['last 3 versions']
+  })
 ]
 
 module.exports = {
   entry: {
-    client: './client/index.js'
+    app: './client/index.js'
   },
   output: {
     path: path.join(__dirname, '../dist/assets'),
@@ -21,9 +20,12 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.vue', '.css', '.json'],
+    fallback: [path.join(__dirname, '../node_modules')],
     alias: {
-      root: path.join(__dirname, '../client'),
-      components: path.join(__dirname, '../client/components')
+      'assets': path.resolve(__dirname, '../client/assets'),
+      // https://github.com/vuejs/vue/wiki/Vue-2.0-RC-Starter-Resources
+      // runtime-only
+      'vue': 'vue/dist/vue.js'
     }
   },
   module: {
@@ -36,14 +38,22 @@ module.exports = {
         test: /\.js$/,
         loaders: ['babel'],
         exclude: [/node_modules/]
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file',
+        query: {
+          name: 'img/[name].[ext]?[hash:7]'
+        }
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url',
+        query: {
+          limit: 10000,
+          name: 'fonts/[name].[ext]?[hash:7]'
+        }
       }
-    ]
-  },
-  babel: {
-    babelrc: false,
-    presets: [
-      ['es2015', {modules: false}],
-      'stage-1'
     ]
   },
   postcss,
@@ -53,8 +63,11 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'zenbot',
+      title: 'Zenbot Dashboard',
       template: __dirname + '/index.html',
-      filename: '../index.html'
+      filename: '../index.html',
+      inject: true,
+      favicon: 'client/assets/zen-logo.png'
     })
-  ]}
+  ]
+}

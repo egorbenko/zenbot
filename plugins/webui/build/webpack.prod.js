@@ -1,14 +1,10 @@
 'use strict'
-const exec = require('child_process').execSync
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const config = require('./webpack.base')
 const pkg = require('../package')
 
-
-exec('rm -rf dist/')
-config.devtool = 'source-map'
 config.entry.vendor = Object.keys(pkg.dependencies).filter(name => {
   // update the code if you want to
   // remove some dependencies you don't need in the vendor bundle
@@ -37,9 +33,27 @@ config.plugins.push(
   })
 )
 
-config.vue.loaders.css = ExtractTextPlugin.extract({
-  loader: 'css-loader',
-  fallbackLoader: 'vue-style-loader'
+config.module.loaders.push({
+  test: /\.css$/,
+  loader: ExtractTextPlugin.extract({
+    loader: 'css-loader!postcss-loader',
+    fallbackLoader: 'style-loader'
+  })
 })
+
+config.vue.loaders = {
+  css: ExtractTextPlugin.extract({
+    loader: 'css-loader',
+    fallbackLoader: 'vue-style-loader'
+  }),
+  sass: ExtractTextPlugin.extract({
+    loader: 'style-loader!css-loader!sass-loader',
+    fallbackLoader: 'vue-style-loader'
+  }),
+  scss: ExtractTextPlugin.extract({
+    loader: 'style-loader!css-loader!sass-loader',
+    fallbackLoader: 'vue-style-loader'
+  })
+}
 
 module.exports = config

@@ -1,13 +1,10 @@
 <template>
-  <div>CHART GOES HERE</div>
+  <p>
+    Settings go here
+  </p>
 </template>
 
 <script>
 export default {
-  
 }
 </script>
-
-<style>
-
-</style>

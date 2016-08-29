@@ -1,15 +1,12 @@
 <template>
   <div class="page">
-    <chart></chart>
+    <p>
+      Upgrating to Vue 2.0!
+    </p>
   </div>
 </template>
 
 <script>
-import Chart from '../components/Chart'
-
 export default {
-  components: {
-    Chart
-  }
 }
 </script>
