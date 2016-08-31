@@ -3,7 +3,7 @@
 // meta.label: display label
 
 // lazy loading Components
-const Chartjs = resolve => require(['../pages/settings/Chartjs.vue'], resolve)
+// const Chartjs = resolve => require(['../pages/settings/Chartjs.vue'], resolve)
 
 export default [
   {
@@ -12,7 +12,7 @@ export default [
     meta: {
       icon: 'fa-tachometer'
     },
-    component: require('../pages/dashboard')
+    component: require('../pages/Dashboard')
   },
   {
     name: 'Settings',
@@ -21,7 +21,7 @@ export default [
       icon: 'fa-cog',
       expanded: false
     },
-    component: require('../pages/settings'),
+    component: require('../pages/Settings'),
 
     // children: [
     //   {

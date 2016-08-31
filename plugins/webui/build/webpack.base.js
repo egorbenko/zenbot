@@ -23,8 +23,6 @@ module.exports = {
     fallback: [path.join(__dirname, '../node_modules')],
     alias: {
       'assets': path.resolve(__dirname, '../client/assets'),
-      // https://github.com/vuejs/vue/wiki/Vue-2.0-RC-Starter-Resources
-      // runtime-only
       'vue': 'vue/dist/vue.js'
     }
   },

@@ -3,7 +3,7 @@
     <div class="tile is-ancestor">
       <div class="tile is-parent">
         <article class="tile is-child box">
-          <h4 class="title">Five</h4>
+          <h4 class="title">Chart</h4>
           <div class="content">
             <chart :type="'doughnut'" :data="chartData"></chart>
           </div>

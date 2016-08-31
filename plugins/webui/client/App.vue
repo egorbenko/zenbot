@@ -1,21 +1,21 @@
 <template>
   <div id="app">
-    <navbar :show="true"></navbar>
+    <navbar></navbar>
     <sidebar :show="config.sidebar"></sidebar>
     <app-main></app-main>
-    <footer-bar></footer-bar>
+    <footerbar></footerbar>
   </div>
 </template>
 
 <script>
-import { Navbar, Sidebar, AppMain, FooterBar } from './components/layout/'
+import { Navbar, Sidebar, AppMain, Footerbar } from './pages/layout/'
 
 export default {
   components: {
     Navbar,
     Sidebar,
     AppMain,
-    FooterBar
+    Footerbar
   },
 
   beforeMount () {
