@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="tile is-ancestor">
-      <div class="tile is-parent">
-        <article class="tile is-child box">
+    <div class="">
+      <div class="">
+        <article class="panel panel-default">
           <h4 class="title">Chart</h4>
-          <div class="content">
+          <div class="panel-body">
             <chart :type="'doughnut'" :data="chartData"></chart>
           </div>
         </article>

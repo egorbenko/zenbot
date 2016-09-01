@@ -1,7 +1,7 @@
 <template>
   <section class="app-main">
-    <div class="container is-fluid is-marginless app-content">
-      <levelbar></levelbar>
+    <div class="container-fluid">
+      <breadcrumbs></breadcrumbs>
       <transition>
         <router-view></router-view>
       </transition>
@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import Levelbar from './Levelbar'
+import Breadcrumbs from './Breadcrumbs.vue'
 
 export default {
   components: {
-    Levelbar
+    Breadcrumbs
   }
 }
 </script>
